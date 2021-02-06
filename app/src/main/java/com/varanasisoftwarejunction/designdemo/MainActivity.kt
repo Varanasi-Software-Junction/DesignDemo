@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
@@ -14,14 +16,27 @@ class MainActivity : AppCompatActivity() {
 
         val b:Button =findViewById<Button>(R.id.button)
         b.setOnClickListener(View.OnClickListener {
-            val text:String="I was clicked"
-            val duration = Toast.LENGTH_SHORT
-            val toast = Toast.makeText(applicationContext, text, duration)
-            toast.show() })
-    }
+            try {
+                doAdd()
+            } catch (ex: Exception) {
+                val text: String = "" + ex.message
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
+            }
+        }
+            )
+        }
+
+
     fun doAdd()
     {
 
+val n1 =("" + findViewById<EditText>(R.id.edN1).text).toInt()
+        val n2 =("" + findViewById<EditText>(R.id.tvN1).text).toInt()
+
+        val sum:String ="" + (n1+n2).toString()
+        findViewById<TextView>(R.id.textView).text=sum
     }
     fun toNextActivity()
     {
